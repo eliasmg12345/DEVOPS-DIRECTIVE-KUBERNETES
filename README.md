@@ -4,6 +4,10 @@
 https://www.jetify.com/docs/devbox/installing-devbox#linux
 
 ```bash
+devbox shell
+# to go out
+exit
+
 # within path 03-installation-setup
 devbox shell
 
