@@ -176,11 +176,16 @@ tasks:
     cmds:
       - kind create cluster --config kind-config.yaml
     desc: Create a Kubernetes cluster using kind
+  
+  kind:02-01-restart-cluster:
+    cmds:
+      - docker start kind-worker kind-worker2 kind-control-plane
+    desc: Restar nodes 
 
   kind:03-run-cloud-provider-kind:
     desc: "Run sigs.k8s.io/cloud-provider-kind@latest to enable load balancer services with KinD"
     cmds:
-      - sudo cloud-provider-kind
+      - sudo $(which cloud-provider-kind)
 
   kind:04-delete-cluster:
     cmds:
