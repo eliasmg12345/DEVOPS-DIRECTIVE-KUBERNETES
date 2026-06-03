@@ -5,7 +5,7 @@ env:
   BORDER_FOREGROUND: "212"
   PADDING: "1 1"
   MARGIN: "1 1"
-  NAMESPACE: 04--cronjob
+  NAMESPACE: 04--daemonset
 
 tasks:
   01-create-namespace:
@@ -14,22 +14,17 @@ tasks:
       - kubectl apply -f Namespace.yaml
       - kubens ${NAMESPACE}
 
-  02-apply-minimal:
-    desc: "Apply the minimal CronJob configuration"
+  02-apply-minimal-pod:
+    desc: "Apply a minimal fluentd pod configuration"
     cmds:
-      - kubectl apply -f CronJob.echo-date-minimal.yaml
+      - kubectl apply -f Pod.fluentd-minimal.yaml
 
-  03-apply-better:
-    desc: "Apply the better CronJob configuration"
+  03-apply-minimal-daemonset:
+    desc: "Apply a minimal fluentd daemonset configuration"
     cmds:
-      - kubectl apply -f CronJob.echo-date-better.yaml
+      - kubectl apply -f DaemonSet.fluentd-minimal.yaml
 
-  04-create-job-from-cronjob:
-    desc: "Manually create a job using a cronjob as the template"
-    cmds:
-      - kubectl create job --from=cronjob/echo-date-better manually-triggered
-
-  05-delete-namespace:
+  04-delete-namespace:
     desc: "Delete the namespace to clean up"
     cmds:
       - cmd: gum style "🚨 Deleting the namespace recursively deletes the resources inside of it! 🚨 "
