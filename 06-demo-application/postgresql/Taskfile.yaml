@@ -1,7 +1,7 @@
 version: "3"
 
 vars:
-  IMAGE_REPO: eliasmgdev7/kubernetes-course
+  IMAGE_REPO: eliasmgdev7/kubernetes-course-db-migrator
   IMAGE_TAG: foobarbaz
 
 tasks:
